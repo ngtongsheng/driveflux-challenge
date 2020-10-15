@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "projects": {
+    "pricing-table": {
+      "root": "apps/pricing-table",
+      "sourceRoot": "apps/pricing-table",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/next:build",
+          "options": {
+            "root": "apps/pricing-table",
+            "outputPath": "dist/apps/pricing-table"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/next:server",
+          "options": {
+            "buildTarget": "pricing-table:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "pricing-table:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "builder": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "pricing-table:build:production"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/pricing-table/**/*.{ts,tsx}"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/pricing-table/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "pricing-table-e2e": {
+      "root": "apps/pricing-table-e2e",
+      "sourceRoot": "apps/pricing-table-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/pricing-table-e2e/cypress.json",
+            "tsConfig": "apps/pricing-table-e2e/tsconfig.e2e.json",
+            "devServerTarget": "pricing-table:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pricing-table:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/pricing-table-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/next"
+  },
+  "schematics": {
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "styled-jsx",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "pricing-table"
+}
