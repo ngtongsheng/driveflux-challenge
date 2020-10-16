@@ -68,6 +68,7 @@ const reducer = (state: PricingState, { type, payload }: Action): PricingState =
 
     case UPDATE_PRICING_FIELD: {
       const { id, field, value } = payload as PricingField;
+      const newValue = Math.max(0, parseFloat(value));
 
       const pricings = state.pricings.map(pricing => {
         if (pricing.id !== id) {
@@ -77,15 +78,15 @@ const reducer = (state: PricingState, { type, payload }: Action): PricingState =
         if (field !== "lite") {
           return {
             ...pricing,
-            [field]: String(parseFloat(value))
+            [field]: String(newValue)
           }
         }
 
         return {
           ...pricing,
-          [field]: String(parseFloat(value)),
-          standard: String(parseFloat(value) * 2),
-          unlimited: String(parseFloat(value) * 3),
+          [field]: String(newValue),
+          standard: String(newValue * 2),
+          unlimited: String(newValue * 3),
         }
       })
 
