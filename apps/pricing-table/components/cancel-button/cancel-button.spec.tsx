@@ -62,9 +62,8 @@ afterEach(cleanup);
 
 describe('CancelButton', () => {
   it('should render successfully', () => {
-    const { baseElement, button } = setup();
+    const { baseElement } = setup();
     expect(baseElement).toBeTruthy();
-    expect(button).toMatchSnapshot();
   });
 
   it('should be able to cancel edit mode', async () => {

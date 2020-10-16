@@ -52,9 +52,8 @@ afterEach(cleanup);
 
 describe('EditButton', () => {
   it('should render successfully', () => {
-    const { baseElement, button } = setup();
+    const { baseElement } = setup();
     expect(baseElement).toBeTruthy();
-    expect(button).toMatchSnapshot();
   });
 
   it('should be able to start edit mode', async () => {

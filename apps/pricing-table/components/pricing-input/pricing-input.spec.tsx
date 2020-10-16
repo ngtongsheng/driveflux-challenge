@@ -68,9 +68,8 @@ afterEach(cleanup);
 
 describe('PricingInput', () => {
   it('should render successfully', () => {
-    const { baseElement, inputs } = setup();
+    const { baseElement } = setup();
     expect(baseElement).toBeTruthy();
-    expect(inputs).toMatchSnapshot();
   });
 
   it('should be able to change standard & unlimited individually', async () => {

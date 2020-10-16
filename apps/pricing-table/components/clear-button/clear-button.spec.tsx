@@ -54,9 +54,8 @@ afterEach(cleanup);
 
 describe('ClearButton', () => {
   it('should render successfully', () => {
-    const { baseElement, button } = setup();
+    const { baseElement } = setup();
     expect(baseElement).toBeTruthy();
-    expect(button).toMatchSnapshot();
   });
 
   it('should be able to clear all pricing fields', async () => {

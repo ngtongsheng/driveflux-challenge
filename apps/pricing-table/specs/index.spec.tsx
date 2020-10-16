@@ -25,6 +25,5 @@ describe('Index', () => {
     );
 
     expect(baseElement).toBeTruthy();
-    expect(baseElement).toMatchSnapshot();
   });
 });

@@ -11,7 +11,7 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 const setup = () => {
   const Component = () => {
     const [state] = useContext(PricingContext);
-    const { snapshot, readOnly, isSaving, pricings } = state;
+    const { snapshot, readOnly, isSaving, pricings, errors } = state;
 
     return (
       <div>
@@ -25,6 +25,7 @@ const setup = () => {
           <span id="pricings">
             {Object.values(pricings[0] || {}).join(',')}
           </span>
+          <span id="errors">{JSON.stringify(errors)}</span>
         </div>
       </div>
     );
@@ -72,9 +73,8 @@ afterEach(cleanup);
 
 describe('SaveButton', () => {
   it('should render successfully', () => {
-    const { baseElement, button } = setup();
+    const { baseElement } = setup();
     expect(baseElement).toBeTruthy();
-    expect(button).toMatchSnapshot();
   });
 
   it('should be successfully saved', async () => {
@@ -102,13 +102,14 @@ describe('SaveButton', () => {
   it('should be reset edit mode if error', async () => {
     const { button, state } = setup();
 
-    mockedAxios.put.mockRejectedValue({});
+    mockedAxios.put.mockRejectedValue({
+      response: {
+        data: { row: 0, field: 'standard', message: 'error' },
+      },
+    });
 
-    expect(state.querySelector('#readOnly').innerHTML).toEqual('false');
     expect(state.querySelector('#isSaving').innerHTML).toEqual('false');
-    expect(state.querySelector('#snapshot').innerHTML).toEqual(
-      'test,test,0,0,0'
-    );
+    expect(state.querySelector('#errors').innerHTML).toEqual('{}');
 
     fireEvent.click(button);
 
@@ -116,10 +117,11 @@ describe('SaveButton', () => {
 
     await waitFor(() => {
       expect(state.querySelector('#isSaving').innerHTML).toEqual('false');
-      expect(state.querySelector('#readOnly').innerHTML).toEqual('true');
-      expect(state.querySelector('#snapshot').innerHTML).toEqual('');
+      expect(state.querySelector('#errors').innerHTML).toEqual(
+        '{"0standard":"error"}'
+      );
       expect(state.querySelector('#pricings').innerHTML).toEqual(
-        'test,test,0,0,0'
+        'test,test,2,4,6'
       );
     });
   });

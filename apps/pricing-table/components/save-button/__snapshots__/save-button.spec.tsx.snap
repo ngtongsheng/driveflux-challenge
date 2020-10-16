@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SaveButton should render successfully 1`] = `
-<button
-  class="jsx-2282515019 button is-dark"
->
-  Save
-</button>
-`;
