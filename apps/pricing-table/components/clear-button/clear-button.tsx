@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { Button } from '@driveflux-code-challenge/ui';
-import { PricingContext, RESET_ALL_PRICINGS } from '../state/context';
+import { PricingContext, RESET_ALL_PRICINGS } from '../../state/context';
 
 export const ClearButton = () => {
   const [, dispatch] = useContext(PricingContext);

@@ -5,8 +5,8 @@ import {
   PricingContext,
   START_SAVE_PRICINGS,
   SUCCESS_SAVE_PRICINGS,
-} from '../state/context';
-import Axios from 'axios';
+} from '../../state/context';
+import axios from 'axios';
 
 export const SaveButton = () => {
   const [state, dispatch] = useContext(PricingContext);
@@ -18,7 +18,7 @@ export const SaveButton = () => {
     });
 
     try {
-      await Axios.put('/api/pricing', { pricings });
+      await axios.put('/api/pricing', { pricings });
       dispatch({
         type: SUCCESS_SAVE_PRICINGS,
       });

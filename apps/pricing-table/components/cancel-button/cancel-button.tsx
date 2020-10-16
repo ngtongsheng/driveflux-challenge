@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { Button } from '@driveflux-code-challenge/ui';
-import { PricingContext, CANCEL_EDIT } from '../state/context';
+import { PricingContext, CANCEL_EDIT } from '../../state/context';
 
 export const CancelButton = () => {
   const [, dispatch] = useContext(PricingContext);

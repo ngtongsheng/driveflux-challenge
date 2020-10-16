@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { Button } from '@driveflux-code-challenge/ui';
-import { PricingContext, START_EDIT } from '../state/context';
+import { PricingContext, START_EDIT } from '../../state/context';
 
 export const EditButton = () => {
   const [, dispatch] = useContext(PricingContext);

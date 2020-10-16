@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClearButton should render successfully 1`] = `
+<button
+  class="jsx-2282515019 button is-dark is-outlined"
+>
+  Clear
+</button>
+`;
