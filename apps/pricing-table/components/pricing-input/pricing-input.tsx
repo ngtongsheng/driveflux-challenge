@@ -5,7 +5,7 @@ import React, {
   InputHTMLAttributes,
 } from 'react';
 import { InputNumber } from '@driveflux-code-challenge/ui';
-import { PricingContext, UPDATE_PRICING_FIELD } from '../state/context';
+import { PricingContext, UPDATE_PRICING_FIELD } from '../../state/context';
 
 export const PricingInput: FunctionComponent<InputHTMLAttributes<
   HTMLInputElement

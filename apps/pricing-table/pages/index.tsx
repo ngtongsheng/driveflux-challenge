@@ -7,7 +7,7 @@ import SaveButton from '../components/save-button/save-button';
 import EditButton from '../components/edit-button/edit-button';
 import CancelButton from '../components/cancel-button/cancel-button';
 import ClearButton from '../components/clear-button/clear-button';
-import PricingInput from '../components/PricingInput';
+import PricingInput from '../components/pricing-input/pricing-input';
 
 export const Index = () => {
   const [state, dispatch] = useContext(PricingContext);

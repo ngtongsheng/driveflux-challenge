@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PricingInput should render successfully 1`] = `
+NodeList [
+  <input
+    class="jsx-3324638787 input"
+    name="lite"
+    type="number"
+    value="0"
+  />,
+  <input
+    class="jsx-3324638787 input"
+    name="standard"
+    type="number"
+    value="0"
+  />,
+  <input
+    class="jsx-3324638787 input"
+    name="unlimited"
+    type="number"
+    value="0"
+  />,
+]
+`;
