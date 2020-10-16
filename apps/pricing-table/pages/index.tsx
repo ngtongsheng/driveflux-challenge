@@ -11,7 +11,7 @@ import PricingInput from '../components/pricing-input/pricing-input';
 
 export const Index = () => {
   const [state, dispatch] = useContext(PricingContext);
-  const { pricings, readOnly } = state;
+  const { pricings, readOnly, errors } = state;
 
   const getPricings = useCallback(async () => {
     const { data } = await axios.get<Pricing[]>('/api/pricing');
@@ -54,17 +54,32 @@ export const Index = () => {
             </tr>
           }
         >
-          {pricings.map(({ id, label, lite, standard, unlimited }) => (
+          {pricings.map(({ id, label, lite, standard, unlimited }, index) => (
             <tr key={id}>
               <td>{label}</td>
               <td>
-                <PricingInput id={id} name="lite" value={lite} />
+                <PricingInput
+                  id={id}
+                  name="lite"
+                  value={lite}
+                  error={errors[`${index}lite`]}
+                />
               </td>
               <td>
-                <PricingInput id={id} name="standard" value={standard} />
+                <PricingInput
+                  id={id}
+                  name="standard"
+                  value={standard}
+                  error={errors[`${index}standard`]}
+                />
               </td>
               <td>
-                <PricingInput id={id} name="unlimited" value={unlimited} />
+                <PricingInput
+                  id={id}
+                  name="unlimited"
+                  value={unlimited}
+                  error={errors[`${index}unlimited`]}
+                />
               </td>
             </tr>
           ))}

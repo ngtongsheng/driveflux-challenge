@@ -1,15 +1,13 @@
-import React, {
-  FunctionComponent,
-  useCallback,
-  useContext,
-  InputHTMLAttributes,
-} from 'react';
-import { InputNumber } from '@driveflux-code-challenge/ui';
+import React, { FunctionComponent, useCallback, useContext } from 'react';
+import { InputNumber, InputNumberProps } from '@driveflux-code-challenge/ui';
 import { PricingContext, UPDATE_PRICING_FIELD } from '../../state/context';
 
-export const PricingInput: FunctionComponent<InputHTMLAttributes<
-  HTMLInputElement
->> = ({ id, value, name }) => {
+export const PricingInput: FunctionComponent<InputNumberProps> = ({
+  id,
+  value,
+  name,
+  ...props
+}) => {
   const [state, dispatch] = useContext(PricingContext);
   const { readOnly, isSaving } = state;
 
@@ -29,6 +27,7 @@ export const PricingInput: FunctionComponent<InputHTMLAttributes<
 
   return (
     <InputNumber
+      {...props}
       name={name}
       value={value}
       readOnly={readOnly}

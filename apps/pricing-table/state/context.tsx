@@ -8,16 +8,25 @@ export const RESET_ALL_PRICINGS = 'RESET_ALL_PRICINGS';
 export const START_SAVE_PRICINGS = 'START_SAVE_PRICINGS';
 export const SUCCESS_GET_PRICINGS = 'SUCCESS_GET_PRICINGS';
 export const SUCCESS_SAVE_PRICINGS = 'SUCCESS_SAVE_PRICINGS';
+export const ERROR_SAVE_PRICINGS = 'ERROR_SAVE_PRICINGS';
 
 interface Action {
   type: string;
-  payload?: PricingField | Pricings;
+  payload?: PricingField | Pricings | PricingError;
 }
 
 interface PricingField {
   id: string;
   field: string;
   value: string;
+}
+
+interface PricingError {
+  error: {
+    row: number;
+    message: string;
+    field: string;
+  }
 }
 
 interface Pricings {
@@ -28,13 +37,17 @@ interface Pricings {
 interface PricingState extends Pricings {
   readOnly: boolean;
   isSaving: boolean;
+  errors: {
+    [key: string]: string;
+  }
 }
 
 const initialState: PricingState = {
   snapshot: [],
   pricings: [],
   readOnly: true,
-  isSaving: false
+  isSaving: false,
+  errors: {}
 };
 
 const reducer = (state: PricingState, { type, payload }: Action): PricingState => {
@@ -63,7 +76,8 @@ const reducer = (state: PricingState, { type, payload }: Action): PricingState =
         snapshot: [],
         pricings: [...snapshot],
         readOnly: true,
-        isSaving: false
+        isSaving: false,
+        errors: {}
       };
     }
 
@@ -107,7 +121,8 @@ const reducer = (state: PricingState, { type, payload }: Action): PricingState =
 
       return {
         ...state,
-        pricings
+        pricings,
+        errors: {}
       };
     }
 
@@ -123,7 +138,21 @@ const reducer = (state: PricingState, { type, payload }: Action): PricingState =
         ...state,
         isSaving: false,
         readOnly: true,
-        snapshot: []
+        snapshot: [],
+        errors: {}
+      };
+    }
+
+    case ERROR_SAVE_PRICINGS: {
+      const { error } = payload as PricingError;
+      const { row, message, field } = error;
+
+      return {
+        ...state,
+        isSaving: false,
+        errors: {
+          [`${row}${field}`]: message
+        }
       };
     }
 

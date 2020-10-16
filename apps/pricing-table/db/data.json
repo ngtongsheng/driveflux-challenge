@@ -3,9 +3,9 @@
     {
       "id": "36months",
       "label": "36 Months",
-      "lite": "5",
-      "standard": "10",
-      "unlimited": "15"
+      "lite": "10",
+      "standard": "20",
+      "unlimited": "30"
     },
     {
       "id": "24months",

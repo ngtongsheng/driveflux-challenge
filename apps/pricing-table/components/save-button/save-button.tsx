@@ -1,10 +1,10 @@
 import React, { useCallback, useContext } from 'react';
 import { Button } from '@driveflux-code-challenge/ui';
 import {
-  CANCEL_EDIT,
   PricingContext,
   START_SAVE_PRICINGS,
   SUCCESS_SAVE_PRICINGS,
+  ERROR_SAVE_PRICINGS,
 } from '../../state/context';
 import axios from 'axios';
 
@@ -19,12 +19,16 @@ export const SaveButton = () => {
 
     try {
       await axios.put('/api/pricing', { pricings });
+
       dispatch({
         type: SUCCESS_SAVE_PRICINGS,
       });
-    } catch (err) {
+    } catch (error) {
       dispatch({
-        type: CANCEL_EDIT,
+        type: ERROR_SAVE_PRICINGS,
+        payload: {
+          error: error.response.data,
+        },
       });
     }
   }, [dispatch, pricings]);
