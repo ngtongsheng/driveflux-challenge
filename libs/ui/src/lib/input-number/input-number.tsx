@@ -4,16 +4,9 @@ import React, {
   useCallback,
 } from 'react';
 
-export interface InputNumberProps
-  extends InputHTMLAttributes<HTMLInputElement> {
-  isEditable?: boolean;
-}
-
-export const InputNumber: FunctionComponent<InputNumberProps> = ({
-  isEditable = true,
-  onChange,
-  ...props
-}) => {
+export const InputNumber: FunctionComponent<InputHTMLAttributes<
+  HTMLInputElement
+>> = ({ onChange, ...props }) => {
   const handleBlur = useCallback(
     (event) => {
       const { target } = event;

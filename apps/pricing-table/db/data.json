@@ -3,30 +3,30 @@
     {
       "id": "36months",
       "label": "36 Months",
-      "lite": "5",
+      "lite": "0",
       "standard": "0",
-      "unlimited": "15"
+      "unlimited": "0"
     },
     {
       "id": "24months",
       "label": "24 Months",
-      "lite": "4",
-      "standard": "8",
-      "unlimited": "12"
+      "lite": "0",
+      "standard": "0",
+      "unlimited": "0"
     },
     {
       "id": "12months",
       "label": "12 Months",
-      "lite": "2",
-      "standard": "4",
-      "unlimited": "6"
+      "lite": "0",
+      "standard": "0",
+      "unlimited": "0"
     },
     {
       "id": "mtm",
       "label": "MTM",
-      "lite": "6",
-      "standard": "12",
-      "unlimited": "18"
+      "lite": "0",
+      "standard": "0",
+      "unlimited": "0"
     }
   ]
 }

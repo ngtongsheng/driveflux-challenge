@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-
+import { Navbar } from '@driveflux-code-challenge/ui';
 import { PricingContextProvider } from '../state/context';
 import 'bulma/css/bulma.css';
 
@@ -10,12 +10,14 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
     <>
       <Head>
         <title>Flux admin</title>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet"></link>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;800&display=swap"
+          rel="stylesheet"
+        ></link>
       </Head>
+      <Navbar></Navbar>
       <section className="section container">
-        <header className="flex">
-          <div className="title is-4 is-uppercase">Flux admin</div>
-        </header>
+        <header className="flex"></header>
         <main>
           <PricingContextProvider>
             <Component {...pageProps} />
@@ -23,12 +25,15 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
         </main>
       </section>
       <style jsx global>{`
-        body, html {
+        body,
+        html {
           font-family: 'Open Sans', sans-serif;
+          font-size: 14px;
         }
 
-        .title, .subtitle  {
-          font-weight: 700;
+        .title,
+        .subtitle {
+          font-weight: 800;
         }
 
         header + main {
