@@ -1,24 +1,40 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ReactComponent as NxLogo } from '../public/nx-logo-white.svg';
-import './styles.css';
+
+import { PricingContextProvider } from '../state/context';
+import 'bulma/css/bulma.css';
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
-        <title>Welcome to pricing-table!</title>
+        <title>Flux admin</title>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet"></link>
       </Head>
-      <div className="app">
+      <section className="section container">
         <header className="flex">
-          <NxLogo width="75" height="50" />
-          <h1>Welcome to pricing-table!</h1>
+          <div className="title is-4 is-uppercase">Flux admin</div>
         </header>
         <main>
-          <Component {...pageProps} />
+          <PricingContextProvider>
+            <Component {...pageProps} />
+          </PricingContextProvider>
         </main>
-      </div>
+      </section>
+      <style jsx global>{`
+        body, html {
+          font-family: 'Open Sans', sans-serif;
+        }
+
+        .title, .subtitle  {
+          font-weight: 700;
+        }
+
+        header + main {
+          margin-top: 1.5em;
+        }
+      `}</style>
     </>
   );
 };
