@@ -62,7 +62,8 @@ const reducer = (state: PricingState, { type, payload }: Action): PricingState =
         ...state,
         snapshot: [],
         pricings: [...snapshot],
-        readOnly: true
+        readOnly: true,
+        isSaving: false
       };
     }
 
@@ -135,8 +136,11 @@ export const PricingContext = createContext<[s: PricingState, d: Dispatch<Action
   [null, null]
 );
 
-export const PricingContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+export const PricingContextProvider = ({ children, overrideState = {} }) => {
+  const [state, dispatch] = useReducer(reducer, {
+    ...initialState,
+    ...overrideState
+  });
 
   return (
     <PricingContext.Provider value={[state, dispatch]}>

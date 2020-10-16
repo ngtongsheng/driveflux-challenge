@@ -24,8 +24,13 @@ export const Table: FunctionComponent<TableProps> = ({ thead, children }) => {
         table.table thead :global(tr th) {
           padding: 1.25em;
         }
+
         table.table tbody :global(tr td) {
-          padding: 0.75em 1.25em;
+          padding: 1em 1.25em;
+        }
+
+        table.table tbody :global(tr) {
+          transition: all 0.3s;
         }
       `}</style>
     </>

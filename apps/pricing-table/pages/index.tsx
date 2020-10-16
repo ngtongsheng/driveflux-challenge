@@ -3,10 +3,10 @@ import axios from 'axios';
 import { Pricing } from '@driveflux-code-challenge/interfaces';
 import { Table } from '@driveflux-code-challenge/ui';
 import { PricingContext, SUCCESS_GET_PRICINGS } from '../state/context';
-import SaveButton from '../components/SaveButton';
-import EditButton from '../components/EditButton';
-import CancelButton from '../components/CancelButton';
-import ClearButton from '../components/ClearButton';
+import SaveButton from '../components/save-button/save-button';
+import EditButton from '../components/edit-button/edit-button';
+import CancelButton from '../components/cancel-button/cancel-button';
+import ClearButton from '../components/clear-button/clear-button';
 import PricingInput from '../components/PricingInput';
 
 export const Index = () => {

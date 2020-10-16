@@ -29,6 +29,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
         html {
           font-family: 'Open Sans', sans-serif;
           font-size: 14px;
+          letter-spacing: 1.4px;
         }
 
         .title,
