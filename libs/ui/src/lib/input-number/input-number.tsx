@@ -3,10 +3,22 @@ import React, {
   InputHTMLAttributes,
   useCallback,
 } from 'react';
+import classNames from 'classnames';
 
-export const InputNumber: FunctionComponent<InputHTMLAttributes<
-  HTMLInputElement
->> = ({ onChange, ...props }) => {
+export interface InputNumberProps
+  extends InputHTMLAttributes<HTMLInputElement> {
+  error?: string;
+}
+
+export const InputNumber: FunctionComponent<InputNumberProps> = ({
+  onChange,
+  error,
+  ...props
+}) => {
+  const className = classNames('input', {
+    'is-danger': error,
+  });
+
   const handleBlur = useCallback(
     (event) => {
       const { target } = event;
@@ -29,15 +41,18 @@ export const InputNumber: FunctionComponent<InputHTMLAttributes<
   );
 
   return (
-    <>
+    <div>
       <input
         {...props}
-        className="input"
+        className={className}
         type="number"
         onBlur={handleBlur}
         onChange={onChange}
       />
+      {error && <span className="help is-danger">{error}</span>}
       <style jsx>{`
+        position: relative;
+
         input {
           height: 3em;
           box-shadow: none;
@@ -47,6 +62,17 @@ export const InputNumber: FunctionComponent<InputHTMLAttributes<
           outline: none;
           transition: all 0.3s;
           padding: 0.5em 1em;
+        }
+
+        input + .help {
+          border-radius: 2px;
+          background: #f14668;
+          color: #fff;
+          padding: 0.5em 1em;
+          width: 100%;
+          position: absolute;
+          top: 100%;
+          transform: translateY(-6px);
         }
 
         input[readOnly] {
@@ -69,7 +95,7 @@ export const InputNumber: FunctionComponent<InputHTMLAttributes<
           box-shadow: none;
         }
       `}</style>
-    </>
+    </div>
   );
 };
 
