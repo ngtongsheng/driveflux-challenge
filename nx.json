@@ -29,6 +29,12 @@
     "pricing-table-e2e": {
       "tags": [],
       "implicitDependencies": ["pricing-table"]
+    },
+    "interfaces": {
+      "tags": []
+    },
+    "ui": {
+      "tags": []
     }
   }
 }
