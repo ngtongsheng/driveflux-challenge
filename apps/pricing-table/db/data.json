@@ -1,0 +1,32 @@
+{
+  "pricings": [
+    {
+      "id": "36months",
+      "label": "36 Months",
+      "lite": "5",
+      "standard": "0",
+      "unlimited": "15"
+    },
+    {
+      "id": "24months",
+      "label": "24 Months",
+      "lite": "4",
+      "standard": "8",
+      "unlimited": "12"
+    },
+    {
+      "id": "12months",
+      "label": "12 Months",
+      "lite": "2",
+      "standard": "4",
+      "unlimited": "6"
+    },
+    {
+      "id": "mtm",
+      "label": "MTM",
+      "lite": "6",
+      "standard": "12",
+      "unlimited": "18"
+    }
+  ]
+}
