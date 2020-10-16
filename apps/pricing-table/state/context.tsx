@@ -3,7 +3,6 @@ import { Pricing } from '@driveflux-code-challenge/interfaces';
 
 export const START_EDIT = 'START_EDIT';
 export const CANCEL_EDIT = 'CANCEL_EDIT';
-export const TOGGLE_READONLY = 'TOGGLE_READONLY';
 export const UPDATE_PRICING_FIELD = 'UPDATE_PRICING_FIELD';
 export const RESET_ALL_PRICINGS = 'RESET_ALL_PRICINGS';
 export const START_SAVE_PRICINGS = 'START_SAVE_PRICINGS';
@@ -65,16 +64,6 @@ const reducer = (state: PricingState, { type, payload }: Action): PricingState =
         pricings: [...snapshot],
         readOnly: true
       };
-    }
-
-    case TOGGLE_READONLY: {
-      const readOnly = !state.readOnly;
-
-      if (!readOnly) {
-        return reducer(state, { type: START_EDIT })
-      }
-
-      return reducer(state, { type: CANCEL_EDIT })
     }
 
     case UPDATE_PRICING_FIELD: {
